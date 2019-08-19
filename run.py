@@ -27,8 +27,8 @@ def execute_cmd(cmd):
 
 def run_test(unit_test):
     unit_test_paths = []
-    if unit_test.lower is 'all':
-        unit_test_paths = [os.getcwd + '/' + x[0] for x in os.walk(os.getcwd()) if has_number(x[0]) ]
+    if unit_test.lower() == 'all':
+        unit_test_paths = [os.getcwd() + '/' + x for x in os.listdir(os.getcwd()) if has_number(x) ]
     else:
         unit_test_paths.append(os.getcwd() + '/' + unit_test)
 
