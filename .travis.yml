@@ -1,0 +1,12 @@
+dist: trusty
+sudo: false
+branches:
+    only:
+    - master
+language: cpp
+compiler: clang
+before_install:
+- sudo apt-get update
+- sudo apt-get install python3
+script:
+    - python3 run.py --test all
