@@ -1,0 +1,4 @@
+/Users/oscar/Documents/projects/si-spring-2019/googletest/build/CMakeFiles/rebuild_cache.dir
+/Users/oscar/Documents/projects/si-spring-2019/googletest/build/CMakeFiles/edit_cache.dir
+/Users/oscar/Documents/projects/si-spring-2019/googletest/build/CMakeFiles/gtest_main.dir
+/Users/oscar/Documents/projects/si-spring-2019/googletest/build/CMakeFiles/gtest.dir
