@@ -49,29 +49,37 @@ def run_test(unit_test):
         exit(1)
 
 def update_repo():                                                            
-    print('Updating')
+    print('Updating...')
     # Stage changes
-    execute_cmd(['git', 'add', '.'])                                     
+    for path in execute_cmd(['git', 'add', '.']):
+        print(path, end='')
     # Commit changes
-    execute_cmd(['git', 'commit', '-m', 'merge in new problems'])
+    for path in execute_cmd(['git', 'commit', '-m', 'merge in new problems']):
+        print(path, end='')
     # Fetch updates
-    execute_cmd(['git', 'fetch', 'omolazabal'])        
+    for path in execute_cmd(['git', 'fetch', 'omolazabal']):
+        print(path, end='')
     # Merge in changes
-    execute_cmd(['git', 'merge', '--no-edit', 'omolazabal/problems'])
+    for path in execute_cmd(['git', 'merge', '--no-edit', 'omolazabal/problems']):
+        print(path, end='')
 
 def git_config():
-    option = raw_input('Are you sure you want to configure Git? This will erase ALL of your progress. (y/n) ')
-    option = option.lower()
-    print('Configuring...')
-    if option is y:
-        execute_cmd(['git', 'remote', 'add', 'omolazabal', 'https://github.com/omolazabal/si-fall-2019.git'])
-        execute_cmd(['git', 'fetch', 'omolazabal'])
-        execute_cmd(['git', 'reset', '--hard', 'omolazabal/problems'])
+    option = input('Are you sure you want to configure Git? This will erase ALL of your progress. (y/n) ')
+    if option.lower() == 'y':
+        print('Configuring...')
+        for path in execute_cmd(['git', 'remote', 'add', 'omolazabal', 'https://github.com/omolazabal/si-fall-2019.git']):
+            print(path, end='')
+        for path in execute_cmd(['git', 'fetch', 'omolazabal']):
+            print(path, end='')
+        for path in execute_cmd(['git', 'reset', '--hard', 'omolazabal/problems']):
+            print(path, end='')
 
 if args.config:
     git_config()
 elif args.update:
     update_repo()
-else:
+elif args.test:
     run_test(args.test)
+else:
+    print('Invalid command')
 
