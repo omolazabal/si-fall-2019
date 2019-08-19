@@ -8,7 +8,7 @@ import os
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', action='store_true')
 parser.add_argument('--update', action='store_true')
-parser.add_argument('-t', '--test', required=True)
+parser.add_argument('-t', '--test')
 args = parser.parse_args()
 
 def has_number(string):
