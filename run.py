@@ -64,7 +64,7 @@ def git_config():
     option = option.lower()
     print('Configuring...')
     if option is y:
-        execute_cmd(['git', 'remote', 'add', 'omolazabal', 'https://github.com/omolazabal/si-spring-2019.git'])
+        execute_cmd(['git', 'remote', 'add', 'omolazabal', 'https://github.com/omolazabal/si-fall-2019.git'])
         execute_cmd(['git', 'fetch', 'omolazabal'])
         execute_cmd(['git', 'reset', '--hard', 'omolazabal/problems'])
 
