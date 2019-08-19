@@ -20,7 +20,7 @@ Every week of the semester this repository will be updated with new exercises. T
 
 To update your repository with the latest problems, run the command `python3 run.py --update` at the root of the repository. This will merge your repository with the [original problems repository](https://github.com/omolazabal/si-fall-2019/tree/problems). To avoid merge conflicts, be sure to **only make edits within the labeled boundaries of the functions**.
 
-To execute your programs, run the command `python3 run.py --test` at the root of the repository followed by the name of the folder you wish to test. For example, running `python3 run.py --test 1-dynamic-memory` will run the unit tests associated with the 1-dynamic-memory problem set. 
+To execute your programs, run the command `python3 run.py --test` at the root of the repository followed by the name of the folder you wish to test. For example, running `python3 run.py --test 1-dynamic-memory` will run the unit tests associated with the 1-dynamic-memory problem set. If you wish to run all tests, use th command `python3 run.py --test all`.
 
 
 ### Summary of commands
