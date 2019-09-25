@@ -31,9 +31,11 @@ template <typename T>
 FixedVector<T>::FixedVector(const FixedVector &rhs) {
     // Implement the copy constructor.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-
-
-
+    size = rhs.size;
+    capacity = rhs.capacity;
+    arr = new T[capacity];
+    for (size_t i = 0; i < size; i++)
+        arr[i] = rhs.arr[i];
     // ====================================================
 }
 
@@ -42,9 +44,10 @@ void FixedVector<T>::push_back(const T &elem) {
     // Insert an element at the next available index of the array.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-
-
-
+    if (size >= capacity)
+        throw range_error("at max size");
+    arr[size] = elem;
+    size++;
     // ====================================================
 }
 
@@ -53,9 +56,9 @@ void FixedVector<T>::pop_back() {
     // Remove element from the back of the vector.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-
-
-
+    if (size < 0)
+        throw range_error("no elements in vector");
+    size--;
     // ====================================================
 }
 
@@ -64,9 +67,9 @@ T FixedVector<T>::at(const size_t index) const {
     // Retrieve the element at the specified index.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return arr[0];
-
-
+    if (index >= size)
+        throw range_error("index exceeds vector size");
+    return arr[index];
     // ====================================================
 }
 
@@ -75,9 +78,9 @@ T &FixedVector<T>::operator[](const size_t index) {
     // Retrieve the element at the specified index.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return arr[0];
-
-
+    if (index >= size)
+        throw range_error("index exceeds vector size");
+    return arr[index];
     // ====================================================
 }
 
