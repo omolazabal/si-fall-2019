@@ -1,8 +1,8 @@
 
 # ============================================================================ #
 # GTest configuration
-GTEST_DIR = ../googletest
-GTEST_LIB_DIR = ../googletest/build
+GTEST_DIR = ../.googletest
+GTEST_LIB_DIR = ../.googletest/build
 GTEST_LIBS = libgtest.a libgtest_main.a
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h

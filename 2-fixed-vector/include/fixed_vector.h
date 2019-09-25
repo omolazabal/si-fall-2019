@@ -64,8 +64,9 @@ T FixedVector<T>::at(const size_t index) const {
     // Retrieve the element at the specified index.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    T a;
-    return a;
+    return arr[0];
+
+
     // ====================================================
 }
 
@@ -74,8 +75,9 @@ T &FixedVector<T>::operator[](const size_t index) {
     // Retrieve the element at the specified index.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    T a;
-    return a;
+    return arr[0];
+
+
     // ====================================================
 }
 
