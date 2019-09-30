@@ -1,71 +1,41 @@
-#!/usr/bin/python3
 
-import argparse
-import subprocess
-import os
+#! /usr/bin/env bash
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--config', action='store_true')
-parser.add_argument('--update', action='store_true')
-parser.add_argument('-t', '--test')
-args = parser.parse_args()
+function run_tests() {
+    cd "$1"
 
-def has_number(string):
-    return any(char.isdigit() for char in string)
+    # Find width of terminal
+    COLUMNS=$(tput cols) 
 
-def execute_cmd(cmd):
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-    for stdout_line in iter(process.stdout.readline, ''):
-        yield stdout_line
-    process.stdout.close()
-    return_code = process.wait()
-    if return_code:
-        if 'make' in cmd:
-            subprocess.run(['make', '-s', 'clean'])
-        raise subprocess.CalledProcessError(return_code, cmd)
+    # Compile tests
+    title="COMPILING $1 TESTS" 
+    printf '\n%*s\n' "$COLUMNS" '' | tr ' ' =
+    printf "\n%*s\n\n" $(((${#title}+$COLUMNS)/2)) "$title"
+    make -s all  # Compile all tests
 
-def run(cmd):
-    for path in execute_cmd(cmd):
-        print(path, end='')
+    # Output results
+    title="RUNNING $1 TESTS" 
+    printf '\n%*s\n' "$COLUMNS" '' | tr ' ' =
+    printf "\n%*s" $(((${#title}+$COLUMNS)/2)) "$title"
+    if ! make exec; then # Run all tests
+        make -s clean
+        exit 1
+    fi
 
-def run_test(unit_test):
-    unit_test_paths = []
-    if unit_test.lower() == 'all':
-        unit_test_paths = [os.getcwd() + '/' + x for x in os.listdir(os.getcwd()) if has_number(x)]
-    else:
-        unit_test_paths.append(os.getcwd() + '/' + unit_test)
+    # Remove generated files
+    title="CLEANING $1 UP" 
+    printf '\n%*s\n' "$COLUMNS" '' | tr ' ' =
+    printf "\n%*s\n\n" $(((${#title}+$COLUMNS)/2)) "$title"
+    printf '%*s\n' "$COLUMNS" '' | tr ' ' =
+    make -s clean  # Remove generated files
 
-    try:
-        for ut in unit_test_paths:
-            os.chdir(ut)
-            run(['make', '-s', 'all'])   # Compile
-            run(['make', 'exec'])        # Run
-            run(['make', '-s', 'clean']) # Clean
-            os.chdir('..')
-    except :
-        exit(1)
+    cd ".."
+}
 
-def update_repo():                                                            
-    print('Updating...')
-    run(['git', 'add', '.'])                                  # Stage changes
-    run(['git', 'commit', '-m', 'merge in new problems'])     # Commit changes
-    run(['git', 'fetch', 'omolazabal'])                       # Fetch updates
-    run(['git', 'merge', '--no-edit', 'omolazabal/problems']) # Merge in changes
-
-def git_config():
-    option = input('Are you sure you want to configure Git? This will erase ALL of your progress. (y/n) ')
-    if option.lower() == 'y':
-        print('Configuring...')
-        run(['git', 'remote', 'add', 'omolazabal', 'https://github.com/omolazabal/si-fall-2019.git'])
-        run(['git', 'fetch', 'omolazabal'])
-        run(['git', 'reset', '--hard', 'omolazabal/problems'])
-
-if args.config:
-    git_config()
-elif args.update:
-    update_repo()
-elif args.test:
-    run_test(args.test)
-else:
-    print('Invalid command')
-
+if [[ -d "$1" ]]; then
+    run_tests "$1"
+else
+    for i in $(ls | grep -E '[0-9]'); do
+        run_tests "$i"
+    done
+fi
