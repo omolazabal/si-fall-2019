@@ -24,89 +24,112 @@ public:
    void clear_elements();
 };
 
-// ===== TODO ===== //
 // For the following tasks manipulate main_list.
 
-// Insert 3 elements at the front of the list
 template <typename T>
 void ListQuestions<T>::push_front_elements() {
-    for (size_t i = 10; i < 13; i++)
-        main_list.push_front(i);
+    // Insert 3 elements at the front of the list
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// Delete the third element from the front of the list
-// Example:
-// BEFORE: [ 1  2  4  6  1  4  . . . ]
-//                 ^
-// AFTER:  [ 1  2  6  1  4  . . . ]
 template <typename T>
 void ListQuestions<T>::delete_element() {
+    // Delete the third element from the front of the list
+    // Example:
+    // BEFORE: [ 1  2  4  6  1  4  . . . ]
+    //                 ^
+    // AFTER:  [ 1  2  6  1  4  . . . ]
     typename list<T>::iterator it = main_list.begin();
-    for (size_t i = 1; i < 3; i++) it++;
-    main_list.erase(it);
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// Retreive an element from the list. Retrieve the element using an iterator.
-// Hint: utilize std::algorithm
 template <typename T>
 typename list<T>::iterator ListQuestions<T>::get_element(const T &elem) {
+    // Retreive an element from the list. Retrieve the element using an iterator.
+    // Hint: utilize std::algorithm
     typename list<T>::iterator it = main_list.begin();
-    it = find(main_list.begin(), main_list.end(), elem);
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
     return it;
+
+
+    // ====================================================
 }
 
-// Remove 3 elements at the front of the list
 template <typename T>
 void ListQuestions<T>::pop_front_elements() {
-    for (size_t i = 1; i < 3; i++)
-        main_list.pop_front();
+    // Remove 3 elements at the front of the list
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// Find the sum of all of the elements of the list. Utilize iterators.
 template <typename T>
 T ListQuestions<T>::sum() {
+    // Find the sum of all of the elements of the list. Utilize iterators.
     typename list<T>::iterator it = main_list.begin();
-    T summation = *it;
-    it++;
-    while (it != main_list.end()) {
-        summation += *it;
-        it++;
-    }
-    return summation;
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return *it;
+
+
+    // ====================================================
 }
 
-// Swap the first and the last element in the list. Utilize iterators.
 template <typename T>
 void ListQuestions<T>::swap_elements() {
-    iter_swap(main_list.begin(), --main_list.end());
+    // Swap the first and the last element in the list. Utilize iterators.
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// Insert an element at the 3rd position in the list.
-// Example:
-// BEFORE: [ 1  2  4  6  1  4  . . . ]
-//                 ^
-// AFTER:  [ 1  2  n  4  6  1  4  . . . ]
 template <typename T>
 void ListQuestions<T>::insert_elements(const T &elem) {
+    // Insert an element at the 3rd position in the list.
+    // Example:
+    // BEFORE: [ 1  2  4  6  1  4  . . . ]
+    //                 ^
+    // AFTER:  [ 1  2  n  4  6  1  4  . . . ]
     typename list<T>::iterator it = main_list.begin();
-    for (size_t i = 1; i < 3; i++) it++;
-    main_list.insert(it, elem);
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// Sort the elements in the list in ascending order.
-// Hint: Use std::algorithm
 template <typename T>
 void ListQuestions<T>::sort() {
-    main_list.sort();
+    // Sort the elements in the list in ascending order.
+    // Hint: Use std::algorithm
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// Remove every element from the list.
 template <typename T>
 void ListQuestions<T>::clear_elements() {
-    main_list.clear();
+    // Remove every element from the list.
+    // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    return;
+
+
+    // ====================================================
 }
 
-// ===== END TODO ===== //
 
 template <typename T>
 ListQuestions<T>::ListQuestions(list<T> copy_list) {
