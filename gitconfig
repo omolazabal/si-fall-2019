@@ -1,0 +1,12 @@
+
+#! /usr/bin/env bash
+
+# Alert user that progress will be overwritten
+read -p "Are you sure? This will erase ALL of your progress. (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    git remote add omolazabal https://github.com/omolazabal/si-fall-2019.git    # Add remote repository
+    git fetch omolazabal                                                        # Fetch changes
+    git reset --hard omolazabal/problems                                        # Hard reset to match problems branch
+fi

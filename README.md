@@ -37,10 +37,10 @@ At the end of the week, the topic's respective codebase will be upadated with so
 2. Create a [GitHub](https://github.com/) account
 3. **Fork the [SI GitHub repository](https://github.com/omolazabal/si-fall-2019/fork)**. You can accomplish this by clicking the [Fork](https://github.com/omolazabal/si-fall-2019/fork) button on the top right corner of this page.
 4. **Navigating to your preferred workspace in your terminal** to work on the repository locally. Use [this guide](https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/command-line-101) if necessary.
-5. **Clone your forked repository** by running the following command. Replace <YOUR_GITHUB_USERNAME> with your GitHub username.
+5. **Clone your forked repository** by running the following command. Replace YOUR_GITHUB_USERNAME with your GitHub username.
 
 ```
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/si-fall-2019.git
+git clone https://github.com/YOUR_GITHUB_USERNAME/si-fall-2019.git
 ```
 
 ## Workflow
@@ -49,7 +49,7 @@ git clone https://github.com/<YOUR_GITHUB_USERNAME>/si-fall-2019.git
 Before you begin working on programming exercises, you'll have to configure your repository so that you can update it with new problems. This can be done by running the following command in your terminal while in your repository:
 
 ```
-./run.py --config
+./gitconfig
 ```
 
 !!! warning
@@ -62,7 +62,7 @@ Every week of the semester this repository will be updated with new exercises. T
 To update your repository with the latest problems, run the command:
 
 ```
-./run.py --update
+./update
 ```
 
 ### Editing Code Segments
@@ -93,21 +93,21 @@ Please only modify the code between the lines. If changes are made elsewhere, th
 To execute your programs, run the following command at the root of your repository:
 
 ```
-./run.py --test <folder_name>
+./run folder_name
 ```
 
-Where the `--test` flag signifies you want to test the corresponding code in the folder named <folder_name>. Please replace <folder_name> with the name of whichever folder you would like to test.
+Where the `./run` signifies you want to run the tests for the corresponding code in the folder named `folder_name`. Please replace `folder_name` with the name of whichever folder you would like to test.
 
 For example, the following command will un the unit tests associated with the [1-dynamic-memory](https://github.com/omolazabal/si-fall-2019/tree/master/1-dynamic-memory) problem set:
 
 ```
-./run.py --test 1-dynamic-memory
+./run 1-dynamic-memory
 ```
 
 If you wish to run all tests, use the command:
 
 ```
-./run.py --test all
+./run
 ```
 
 
@@ -115,8 +115,8 @@ If you wish to run all tests, use the command:
 
 | Command  | Action |
 | ------------- | ------------- |
-| `./run.py --config` | Initial git configuration  |
-| `./run.py --update`  | Update workspace with newly available problems  |
-| `./run.py --test [folder name]`  | Run unit tests to see how your programs perform  |
+| `./gitconfig` | Initial git configuration  |
+| `./update`  | Update workspace with newly available problems  |
+| `./run [folder name]`  | Run unit tests to see how your programs perform  |
 
 

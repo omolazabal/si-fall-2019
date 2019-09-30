@@ -1,0 +1,7 @@
+
+#! /usr/bin/env bash
+
+git add .                                   # Stage changes
+git commit -m "merge in new problems"       # Commit changes
+git fetch omolazabal                        # Fetch updates from remote repo
+git merge --no-edit omolazabal/problems     # Merge in changes from problems branch
