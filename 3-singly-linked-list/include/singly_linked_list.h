@@ -42,9 +42,8 @@ void SinglyLinkedList<T>::clear() {
     // Delete every node in the linked list.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    while (!empty())
+        pop_front();
     // ====================================================
 }
 
@@ -53,9 +52,12 @@ size_t SinglyLinkedList<T>::size() {
     // Return the number of nodes in the linked list.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return 0;
-
-
+    if (empty())
+        throw length_error("empty list");
+    size_t counter = 0;
+    for (Node<T> *i = head; i != nullptr; i = i->next)
+        counter++;
+    return counter;
     // ====================================================
 }
 
@@ -64,9 +66,14 @@ T& SinglyLinkedList<T>::at(size_t i) {
     // Return the data stored in the ith node
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return front();
-
-
+    if (empty())
+        throw length_error("empty list");
+    if (i >= size())
+        throw range_error("index exceeds list size");
+    Node<T> *temp = head;
+    for (size_t j = 0; j < i; j++)
+        temp = temp->next;
+    return temp->data;
     // ====================================================
 }
 
@@ -75,9 +82,23 @@ void SinglyLinkedList<T>::swap_head_tail() {
     // Swap the head and tail nodes in the linked list.
     // Utilize stdexcept to handle edge cases.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
+    if (size() < 2)
+        throw length_error("not enough items in list");
+    Node<T> *new_tail = head;
+    Node<T> *tail_successor = head;
+    while (tail_successor->next != tail)
+        tail_successor = tail_successor->next;
 
+    // Case in which there are more than two nodes
+    if (head->next != tail) {
+        head = head->next;
+        tail_successor->next = new_tail;
+    }
 
+    tail->next = head;
+    new_tail->next = nullptr;
+    head = tail;
+    tail = new_tail;
     // ====================================================
 }
 
