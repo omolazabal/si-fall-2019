@@ -30,9 +30,8 @@ template <typename T>
 void ListQuestions<T>::push_front_elements() {
     // Insert 3 elements at the front of the list
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    for (size_t i = 10; i < 13; i++)
+        main_list.push_front(i);
     // ====================================================
 }
 
@@ -45,9 +44,8 @@ void ListQuestions<T>::delete_element() {
     // AFTER:  [ 1  2  6  1  4  . . . ]
     typename list<T>::iterator it = main_list.begin();
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    for (size_t i = 1; i < 3; i++) it++;
+    main_list.erase(it);
     // ====================================================
 }
 
@@ -57,6 +55,7 @@ typename list<T>::iterator ListQuestions<T>::get_element(const T &elem) {
     // Hint: utilize std::algorithm
     typename list<T>::iterator it = main_list.begin();
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
+    it = find(main_list.begin(), main_list.end(), elem);
     return it;
 
 
@@ -67,9 +66,8 @@ template <typename T>
 void ListQuestions<T>::pop_front_elements() {
     // Remove 3 elements at the front of the list
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    for (size_t i = 1; i < 3; i++)
+        main_list.pop_front();
     // ====================================================
 }
 
@@ -78,9 +76,13 @@ T ListQuestions<T>::sum() {
     // Find the sum of all of the elements of the list. Utilize iterators.
     typename list<T>::iterator it = main_list.begin();
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return *it;
-
-
+    T summation = *it;
+    it++;
+    while (it != main_list.end()) {
+        summation += *it;
+        it++;
+    }
+    return summation;
     // ====================================================
 }
 
@@ -88,9 +90,7 @@ template <typename T>
 void ListQuestions<T>::swap_elements() {
     // Swap the first and the last element in the list. Utilize iterators.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    iter_swap(main_list.begin(), --main_list.end());
     // ====================================================
 }
 
@@ -103,9 +103,8 @@ void ListQuestions<T>::insert_elements(const T &elem) {
     // AFTER:  [ 1  2  n  4  6  1  4  . . . ]
     typename list<T>::iterator it = main_list.begin();
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    for (size_t i = 1; i < 3; i++) it++;
+    main_list.insert(it, elem);
     // ====================================================
 }
 
@@ -114,9 +113,7 @@ void ListQuestions<T>::sort() {
     // Sort the elements in the list in ascending order.
     // Hint: Use std::algorithm
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    main_list.sort();
     // ====================================================
 }
 
@@ -124,9 +121,7 @@ template <typename T>
 void ListQuestions<T>::clear_elements() {
     // Remove every element from the list.
     // ========= ONLY MODIFY BETWEEN THE LINES  ===========
-    return;
-
-
+    main_list.clear();
     // ====================================================
 }
 
